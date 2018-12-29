@@ -60,12 +60,15 @@ public class SiteUser {
 	
 	public SiteUser(){}
 	
-	public SiteUser(String email, String password) {
+	public SiteUser(String email, String password, String firstname, String surname) {
 		this.email = email;
-		this.plainPassword = password;
+		this.setPlainPassword(password);
 		this.repeatPassword = password;
 		this.enabled = true;
+		this.firstname=firstname;
+		this.surname=surname;
 	}
+
 
 	public Long getId() {
 		return id;
