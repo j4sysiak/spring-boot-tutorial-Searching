@@ -5,8 +5,10 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -22,6 +24,8 @@ import org.springframework.test.context.TestPropertySource;
 //import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.caveofprogramming.model.Interest;
+import com.caveofprogramming.model.Profile;
 import com.caveofprogramming.model.SiteUser;
 import com.caveofprogramming.service.InterestService;
 import com.caveofprogramming.service.ProfileService;
@@ -88,30 +92,48 @@ public class BulkTests {
 //		System.out.println(s);
 //	}
 	
-	for(int numUsers=0; numUsers < 200; numUsers++) {
-		
-		String firstname = names.get(random.nextInt(names.size()));
-		String surname = names.get(random.nextInt(names.size()));
-		
-		String email = firstname.toLowerCase() + surname.toLowerCase() + "@example.com";
-		
-		if(siteUserService.get(email) != null) {
-			continue;
-		}
-		
-		String password = "pass" + firstname.toLowerCase();
-		password = password.substring(0, Math.min(15, password.length()));
-		
-		assertTrue(password.length() <= 15);
-		
+		for(int numUsers=0; numUsers < 20; numUsers++) {
+			
+			String firstname = names.get(random.nextInt(names.size()));
+			String surname = names.get(random.nextInt(names.size()));
+			
+			String email = firstname.toLowerCase() + surname.toLowerCase() + "@example.com";
+			
+			if(siteUserService.get(email) != null) {
+				continue;
+			}
+			
+			String password = "pass" + firstname.toLowerCase();
+			password = password.substring(0, Math.min(15, password.length()));
+			
+			assertTrue(password.length() <= 15);
+			
 
-		SiteUser user = new SiteUser(email, password, firstname, surname);
-		user.setEnabled(random.nextInt(5) != 0);  // co piaty bedzie disable
-		
-		System.out.println("user: " + user);
-		//userService.register(user);
-		
-	}
+			SiteUser user = new SiteUser(email, password, firstname, surname);
+			user.setEnabled(random.nextInt(5) != 0);  // co piaty bedzie disable
+			
+			//System.out.println(user);
+
+			siteUserService.register(user);
+			
+			Profile profile = new Profile(user);
+			
+			int numberInterests = random.nextInt(7);
+			
+			Set<Interest> userInterests = new HashSet<Interest>();
+
+			for(int i=0; i<numberInterests; i++) {
+				
+				String interestText = interests.get(random.nextInt(interests.size()));
+				
+				Interest interest = interestService.createIfNotExists(interestText);
+				userInterests.add(interest);
+			}
+			
+			profile.setInterests(userInterests);
+			profileService.save(profile);
+			
+		}
 	
 	assertTrue(true);
 	}
