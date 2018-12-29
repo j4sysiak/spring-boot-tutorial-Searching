@@ -9,6 +9,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -40,6 +41,16 @@ public class SiteUser {
 	
 	@Column(name="enabled")
 	private Boolean enabled=true;
+	
+	@NotNull
+	@Column(name = "firstname", length = 20)
+	@Size(min = 2, max = 20, message = "{register.firstname.size}")
+	private String firstname;
+
+	@NotNull
+	@Column(name = "surname", length = 25)
+	@Size(min = 2, max = 25, message = "{register.surname.size}")
+	private String surname;
 	
 	@Transient
 	private String repeatPassword;
@@ -113,4 +124,21 @@ public class SiteUser {
 		this.enabled = enabled;
 	}
 
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	
 }
