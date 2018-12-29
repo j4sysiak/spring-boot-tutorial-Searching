@@ -1,9 +1,12 @@
 package com.caveofprogramming.tests;
 
+import static org.junit.Assert.*;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -11,12 +14,18 @@ import javax.transaction.Transactional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.TestPropertySource;
 //import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.caveofprogramming.model.SiteUser;
+import com.caveofprogramming.service.InterestService;
+import com.caveofprogramming.service.ProfileService;
+import com.caveofprogramming.service.SiteUserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
@@ -26,6 +35,15 @@ public class BulkTests {
 	
 	private static final String namesFile = "/com/caveofprogramming/tests/data/names.txt";
 	private static final String interestsFile = "/com/caveofprogramming/tests/data/hobbies.txt";
+	
+	@Autowired 
+	private SiteUserService siteUserService;
+	
+	@Autowired 
+	private ProfileService profileService;
+	
+	@Autowired
+	private InterestService interestService;
 
 	private List<String> loadFile(String filename, int maxLength) throws IOException {
 		
@@ -57,12 +75,45 @@ public class BulkTests {
 	@Test
 	public void createTestData() throws IOException {
 		
+		Random random = new Random();
+		
 		List<String> names = loadFile(namesFile, 25);
 		List<String> interests = loadFile(interestsFile, 25);
 		
-//		for(String s : names){
-//			System.out.println(s);
-//		}
+//		for(String s: names){
+//		System.out.println(s);
+//	}
+//	
+//	for(String s: interests){
+//		System.out.println(s);
+//	}
+	
+	for(int numUsers=0; numUsers < 2; numUsers++) {
+		
+		String firstname = names.get(random.nextInt(names.size()));
+		String surname = names.get(random.nextInt(names.size()));
+		
+		String email = firstname.toLowerCase() + surname.toLowerCase() + "@example.com";
+		
+		if(siteUserService.get(email) != null) {
+			continue;
+		}
+		
+		String password = "pass" + firstname.toLowerCase();
+		password = password.substring(0, Math.min(15, password.length()));
+		
+		assertTrue(password.length() <= 15);
+		
+
+		SiteUser user = new SiteUser(email, password, firstname, surname);
+		user.setEnabled(random.nextInt(5) != 0);  // co piaty bedzie disable
+		
+		System.out.println(user);
+		//userService.register(user);
+		
+	}
+	
+	assertTrue(true);
 	}
 
 }
