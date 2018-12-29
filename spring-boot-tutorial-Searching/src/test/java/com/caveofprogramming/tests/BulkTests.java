@@ -72,6 +72,7 @@ public class BulkTests {
 		 
 		 stream.close();
 		 
+		 
 		return items;
 	}
 	
