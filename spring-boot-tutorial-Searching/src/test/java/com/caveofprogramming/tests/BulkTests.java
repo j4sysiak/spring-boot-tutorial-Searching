@@ -34,7 +34,7 @@ import com.caveofprogramming.service.SiteUserService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
 @TestPropertySource(locations="classpath:test.properties")
-@Transactional
+//@Transactional
 public class BulkTests {
 	
 	private static final String namesFile = "/com/caveofprogramming/tests/data/names.txt";
@@ -112,7 +112,7 @@ public class BulkTests {
 			SiteUser user = new SiteUser(email, password, firstname, surname);
 			user.setEnabled(random.nextInt(5) != 0);  // co piaty bedzie disable
 			
-			//System.out.println(user);
+			System.out.println(user);
 
 			siteUserService.register(user);
 			
