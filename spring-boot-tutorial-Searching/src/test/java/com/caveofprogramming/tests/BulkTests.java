@@ -39,16 +39,18 @@ public class BulkTests {
 		
 		//stream.forEach(System.out::println);
 
-		List<String> items = stream
+		 List<String> items =  stream
 				.filter(line -> !line.isEmpty())
 				.map(line -> line.trim())
 				.filter(line -> line.length() <= maxLength)
 				.map(line -> line.substring(0, 1).toUpperCase() + line.substring(1).toLowerCase())
 				.collect(Collectors.toList());
-		
+				   
 		// @formatter:on
 		 
-		return null;
+		 stream.close();
+		 
+		return items;
 	}
 	
 	//@Ignore
@@ -57,6 +59,10 @@ public class BulkTests {
 		
 		List<String> names = loadFile(namesFile, 25);
 		List<String> interests = loadFile(interestsFile, 25);
+		
+//		for(String s : names){
+//			System.out.println(s);
+//		}
 	}
 
 }
