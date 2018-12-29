@@ -88,7 +88,7 @@ public class BulkTests {
 //		System.out.println(s);
 //	}
 	
-	for(int numUsers=0; numUsers < 2; numUsers++) {
+	for(int numUsers=0; numUsers < 200; numUsers++) {
 		
 		String firstname = names.get(random.nextInt(names.size()));
 		String surname = names.get(random.nextInt(names.size()));
@@ -108,7 +108,7 @@ public class BulkTests {
 		SiteUser user = new SiteUser(email, password, firstname, surname);
 		user.setEnabled(random.nextInt(5) != 0);  // co piaty bedzie disable
 		
-		System.out.println(user);
+		System.out.println("user: " + user);
 		//userService.register(user);
 		
 	}

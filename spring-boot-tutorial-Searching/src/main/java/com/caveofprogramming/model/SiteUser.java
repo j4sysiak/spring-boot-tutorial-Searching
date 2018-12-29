@@ -143,5 +143,13 @@ public class SiteUser {
 		this.surname = surname;
 	}
 
+	@Override
+	public String toString() {
+		return "SiteUser [id=" + id + ", email=" + email + ", plainPassword="
+				+ plainPassword + ", password=" + password + ", enabled="
+				+ enabled + ", firstname=" + firstname + ", surname=" + surname
+				+ ", repeatPassword=" + repeatPassword + ", role=" + role + "]";
+	}
+
 	
 }
