@@ -34,7 +34,7 @@ import com.caveofprogramming.service.SiteUserService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
 @TestPropertySource(locations="classpath:test.properties")
-//@Transactional
+@Transactional
 public class BulkTests {
 	
 	private static final String namesFile = "/com/caveofprogramming/tests/data/names.txt";
