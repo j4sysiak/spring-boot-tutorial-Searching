@@ -3,6 +3,7 @@ package com.caveofprogramming.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -15,7 +16,8 @@ import com.caveofprogramming.model.repository.StatusUpdateDao;
 @Service
 public class StatusUpdateService {
 	
-	private final static int PAGESIZE = 3;
+	@Value("${status.pagesize}")
+	private int pageSize = 3;
 	
 	@Autowired
 	private StatusUpdateDao statusUpdateDao;
@@ -30,7 +32,7 @@ public class StatusUpdateService {
 	}
 	
 	public Page<StatusUpdate> getPage(int pageNumber) {
-		PageRequest request = PageRequest.of(pageNumber-1, PAGESIZE, Sort.Direction.DESC, "added");
+		PageRequest request = PageRequest.of(pageNumber-1, pageSize, Sort.Direction.DESC, "added");
 		
 		return statusUpdateDao.findAll(request);
 	}
