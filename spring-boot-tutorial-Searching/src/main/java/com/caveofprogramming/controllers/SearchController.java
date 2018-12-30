@@ -23,11 +23,11 @@ public class SearchController {
 	 SearchService searchService;
 
 	@RequestMapping(value="/search", method={RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView search(ModelAndView modelAndView, @RequestParam("s") String text, @RequestParam(name="p", defaultValue="1") int pageNumber) {
+	public ModelAndView search(ModelAndView modelAndView, @RequestParam("s") String text /*, @RequestParam(name="p", defaultValue="1") int pageNumber*/) {
 		
 		//System.out.println("Search text: " + text);
 		
-		List<SearchResult> results = searchService.search(text, pageNumber);
+		List<SearchResult> results = searchService.search(text/*, pageNumber*/);
 		
 		//Page<SearchResult> results = searchService.search(text, pageNumber);
 		

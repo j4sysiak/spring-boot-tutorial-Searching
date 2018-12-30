@@ -17,5 +17,5 @@ public interface ProfileDao extends PagingAndSortingRepository<Profile, Long> {
 	Profile findByUser(SiteUser user);
 
 	Collection<Profile> findByInterestsNameContainingIgnoreCase(String text);
-	Collection<Profile> findByInterestsNameContainingIgnoreCase(String text, Pageable request);
+	//Collection<Profile> findByInterestsNameContainingIgnoreCase(String text, Pageable request);
 }
