@@ -11,21 +11,34 @@
 		</c:if>
 	</div>
 </div>
+
+
  
  
  <c:forEach var="result" items="${results}">
  
- 	<c:url var="profilePhoto" value="/profilephoto/${result.userId}" />
- 	<img id= "profilePhotoImage" src="${profilePhoto}" />
-  
- 	<p>
- 	 <strong>${result.userId} ${result.firstname} ${result.surname}</strong> 
- 	 
- 	 <c:forEach var="interest" items="${result.interests}">
- 	 	${interest}
- 	 </c:forEach>
-    </p>
- 	 
+ <c:url var="profilePhoto" value="/profilephoto/${result.userId}" />
+ 
+ <div class="row">
+	<div class="col-md-12">
+	
+		<div class="results-photo">
+ 			<img id= "profilePhotoImage" src="${profilePhoto}" />
+ 		</div>
+ 		
+ 		<div class="results-details">
+ 			<div class="results-name">
+ 				<c:out value="${result.firstname}"></c:out> <c:out value="${result.surname}"></c:out>
+ 			</div>
+ 			
+ 			<c:forEach var="interest" items="${result.interests}">
+ 	 			${interest}
+ 	 		</c:forEach>
+ 		</div>
+   
+	</div>
+</div>
+
  </c:forEach>
  
  
