@@ -31,7 +31,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.caveofprogramming.exceptions.ImageTooSmallException;
 import com.caveofprogramming.exceptions.InvalidFileException;
-import com.caveofprogramming.model.FileInfo;
+import com.caveofprogramming.model.dto.FileInfo;
 import com.caveofprogramming.model.entity.Interest;
 import com.caveofprogramming.model.entity.Profile;
 import com.caveofprogramming.model.entity.SiteUser;

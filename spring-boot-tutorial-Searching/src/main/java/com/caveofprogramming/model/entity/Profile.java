@@ -20,7 +20,7 @@ import javax.validation.constraints.Size;
 
 import org.owasp.html.PolicyFactory;
 
-import com.caveofprogramming.model.FileInfo;
+import com.caveofprogramming.model.dto.FileInfo;
  
 
 @Entity

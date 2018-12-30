@@ -1,6 +1,7 @@
 package com.caveofprogramming.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,6 +14,9 @@ import org.springframework.stereotype.Service;
 
 //import com.caveofprogramming.model.SearchResult;
 
+
+
+import com.caveofprogramming.model.dto.SearchResult;
 import com.caveofprogramming.model.entity.Profile;
 import com.caveofprogramming.model.repository.ProfileDao;
 
@@ -25,10 +29,8 @@ public class SearchService {
 	@Autowired
 	private ProfileDao profileDao;
 
-	public List<Profile> /*Page<SearchResult>*/ search(String text /*, int pageNumber*/) {
-		
-		profileDao.findByInterestsNameContainingIgnoreCase(text /*, request*/).stream().forEach(System.out::println);
-		
+	public List<SearchResult> /*Page<SearchResult>*/ search(String text /*, int pageNumber*/) {
+		 
 		//PageRequest request = new PageRequest(pageNumber-1, pageSize);
 		//Page<Profile> results = profileDao.findByInterestsNameContainingIgnoreCase(text, request);
 		
@@ -39,7 +41,8 @@ public class SearchService {
 //			
 //		};
 		
-		return null; //results.map(converter);
+		//return results.map(converter);
+		return profileDao.findByInterestsNameContainingIgnoreCase(text /*, request*/).stream().map(SearchResult::new).collect(Collectors.toList());
 	}
 
 }
