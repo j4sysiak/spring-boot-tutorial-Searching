@@ -10,9 +10,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 
+
 //import com.caveofprogramming.model.SearchResult;
-import com.caveofprogramming.model.Profile;
-import com.caveofprogramming.model.ProfileDao;
+
+import com.caveofprogramming.model.entity.Profile;
+import com.caveofprogramming.model.repository.ProfileDao;
 
 @Service
 public class SearchService {

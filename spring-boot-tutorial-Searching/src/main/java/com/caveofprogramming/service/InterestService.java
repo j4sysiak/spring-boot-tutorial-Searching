@@ -3,8 +3,8 @@ package com.caveofprogramming.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.caveofprogramming.model.Interest;
-import com.caveofprogramming.model.InterestDao;
+import com.caveofprogramming.model.entity.Interest;
+import com.caveofprogramming.model.repository.InterestDao;
 
 @Service
 public class InterestService {
