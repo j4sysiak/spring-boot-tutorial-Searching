@@ -8,19 +8,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.caveofprogramming.service.SearchService;
+
 //import com.caveofprogramming.model.dto.SearchResult;
 //import com.caveofprogramming.service.SearchService;
 
 @Controller
 public class SearchController {
 	
-	//@Autowired
-	//SearchService searchService;
+	@Autowired
+	SearchService searchService;
 
 	@RequestMapping(value="/search", method=RequestMethod.POST /* method={RequestMethod.POST, RequestMethod.GET} */)
 	public ModelAndView search(ModelAndView modelAndView, @RequestParam("s") String text /*, @RequestParam(name="p", defaultValue="1") int pageNumber */) {
 		
 		System.out.println("Search text: " + text);
+		
+		searchService.search(text);
 		
 		//Page<SearchResult> results = searchService.search(text, pageNumber);
 		
@@ -31,3 +35,33 @@ public class SearchController {
 		return modelAndView;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
