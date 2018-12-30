@@ -4,6 +4,8 @@ import java.util.Collection;
 
 
 
+
+import org.springframework.data.domain.Pageable;
 //import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
@@ -15,4 +17,5 @@ public interface ProfileDao extends PagingAndSortingRepository<Profile, Long> {
 	Profile findByUser(SiteUser user);
 
 	Collection<Profile> findByInterestsNameContainingIgnoreCase(String text);
+	Collection<Profile> findByInterestsNameContainingIgnoreCase(String text, Pageable request);
 }
