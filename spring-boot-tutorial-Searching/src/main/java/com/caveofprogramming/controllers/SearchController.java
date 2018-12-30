@@ -22,7 +22,7 @@ public class SearchController {
 	 @Autowired
 	 SearchService searchService;
 
-	@RequestMapping(value="/search", method=RequestMethod.POST /* method={RequestMethod.POST, RequestMethod.GET} */)
+	@RequestMapping(value="/search", method={RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView search(ModelAndView modelAndView, @RequestParam("s") String text /*, @RequestParam(name="p", defaultValue="1") int pageNumber */) {
 		
 		//System.out.println("Search text: " + text);
