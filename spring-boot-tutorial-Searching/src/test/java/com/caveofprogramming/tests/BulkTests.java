@@ -51,6 +51,7 @@ public class BulkTests {
 
 	private List<String> loadFile(String filename, int maxLength) throws IOException {
 		
+		
 		Path filePath = new ClassPathResource(filename).getFile().toPath();
 		
 		//System.out.println("filePath: " + filePath);
