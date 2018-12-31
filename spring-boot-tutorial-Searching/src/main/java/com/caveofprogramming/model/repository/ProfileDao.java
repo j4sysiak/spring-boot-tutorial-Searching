@@ -6,11 +6,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.caveofprogramming.model.entity.Profile;
 import com.caveofprogramming.model.entity.SiteUser;
 
-public interface ProfileDao extends CrudRepository<Profile, Long> {	
+public interface ProfileDao extends PagingAndSortingRepository<Profile, Long> /* CrudRepository<Profile, Long>*/ {	
 	
 	Profile findByUser(SiteUser user);
 
