@@ -6,14 +6,21 @@
  
 <div class="row">
 	<div class="col-md-12 results-noresult">
-		<c:if test="${empty results}">
+		<c:if test="${empty page.content}">
    			No results.
 		</c:if>
 	</div>
 </div>
 
+<c:url var="searchUrl" value="/search" />
 
- <c:forEach var="result" items="${results.content}">
+<div class="row">	
+	<div class="col-md-12">
+		<jwp:pagination url="${searchUrl}" page="${page}" size="3" />
+	</div>
+</div>
+
+ <c:forEach var="result" items="${page.content}">
  
  <c:url var="profilePhoto" value="/profilephoto/${result.userId}" />
  <c:url var="profileLink" value="/profile/${result.userId}" />

@@ -31,9 +31,7 @@ public class SearchController {
 		Page<SearchResult> results = searchService.search(text, pageNumber);
 		
 	//	modelAndView.getModel().put("s", text);
-	// 	modelAndView.getModel().put("page", results);
-		
-		modelAndView.getModel().put("results", results);
+	    modelAndView.getModel().put("page", results);
 		modelAndView.setViewName("app.search");
 		
 		return modelAndView;

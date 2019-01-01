@@ -32,8 +32,7 @@ public class SearchService {
 		} else {
 			results = profileDao.findByInterestsNameContainingIgnoreCase(text, request);
 		}
-		 
-		
+		  
 //		Converter<Profile, SearchResult> converter = new Converter<Profile, SearchResult>() {
 //			public SearchResult convert(Profile profile) {
 //				return new SearchResult(profile);

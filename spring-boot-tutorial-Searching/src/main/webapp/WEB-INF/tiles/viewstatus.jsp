@@ -5,8 +5,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="jwp" %>
 
 
-   
- <p>Page number: ${param.p}</p>
+<p>Page number: ${param.p}</p>
 
 <c:url var="url" value="/viewstatus" />
  
