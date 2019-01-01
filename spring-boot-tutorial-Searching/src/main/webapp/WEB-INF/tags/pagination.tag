@@ -12,6 +12,7 @@
 <%@ attribute name="url" required="true"%>
 
 <p>Base url contains question mark: ${fn:contains(url, '?')}</p>
+<c:set var="paramListSeparator" value="${fn:contains(url,'?') ? '&': '?'}" />
 
 <%-- Number of page numbers to display at once. --%>
 <%@ attribute name="size" required="false"%>
