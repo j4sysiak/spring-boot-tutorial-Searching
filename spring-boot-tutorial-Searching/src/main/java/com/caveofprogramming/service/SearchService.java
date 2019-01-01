@@ -29,9 +29,10 @@ public class SearchService {
 		
 		if(text.trim().length()==0){
 			results = profileDao.findAll(request);
+		} else {
+			results = profileDao.findByInterestsNameContainingIgnoreCase(text, request);
 		}
-		results = profileDao.findByInterestsNameContainingIgnoreCase(text, request);
-		
+		 
 //		Converter<Profile, SearchResult> converter = new Converter<Profile, SearchResult>() {
 //			public SearchResult convert(Profile profile) {
 //				return new SearchResult(profile);
@@ -39,7 +40,6 @@ public class SearchService {
 //		};
 		
 		return results.map(p -> new SearchResult(p));
-	  
 	}
 
 }
