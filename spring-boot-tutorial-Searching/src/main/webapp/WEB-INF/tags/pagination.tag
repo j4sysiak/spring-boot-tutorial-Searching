@@ -14,6 +14,8 @@
 <%@ attribute name="size" required="false"%>
 
 
+
+
 <%----------ATTRIBUTE CALCULATIONS ----------------%>
 
 <c:set var="size" value="${empty size ? 10: size}" />
@@ -23,6 +25,8 @@
 <c:set var="startPage" value="${block * size + 1}" />
 <c:set var="endPage"   value="${(block + 1) * size}" />
 <c:set var="endPage"   value="${endPage > page.totalPages ? page.totalPages : endPage}" />
+
+
 
 
 <%----------OUTPUT ----------------%>
@@ -63,3 +67,38 @@
 </div>
 
 </c:if>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
