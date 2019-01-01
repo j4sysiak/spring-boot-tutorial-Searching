@@ -1,5 +1,6 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
 <%----------ATTRIBUTES----------------%>
@@ -10,10 +11,10 @@
 <%----------Base url of page----------------%>
 <%@ attribute name="url" required="true"%>
 
+<p>Base url contains question mark: ${fn:contains(url, '?')}</p>
+
 <%-- Number of page numbers to display at once. --%>
 <%@ attribute name="size" required="false"%>
-
-
 
 
 <%----------ATTRIBUTE CALCULATIONS ----------------%>
@@ -25,8 +26,6 @@
 <c:set var="startPage" value="${block * size + 1}" />
 <c:set var="endPage"   value="${(block + 1) * size}" />
 <c:set var="endPage"   value="${endPage > page.totalPages ? page.totalPages : endPage}" />
-
-
 
 
 <%----------OUTPUT ----------------%>
@@ -67,38 +66,3 @@
 </div>
 
 </c:if>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
