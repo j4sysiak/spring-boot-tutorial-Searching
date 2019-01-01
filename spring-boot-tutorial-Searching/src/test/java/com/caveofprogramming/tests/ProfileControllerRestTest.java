@@ -58,7 +58,7 @@ public class ProfileControllerRestTest {
 	}
 	
 	@Test
-	@WithMockUser(username = "p1@wp.pl")
+	@WithMockUser(username = "p1@wp.pl") //takiego trzeba utworzyć w bazie
 	public void testSaveAndDeleteInterest() throws Exception {
 		
 		String interestText = "some interest_here";
