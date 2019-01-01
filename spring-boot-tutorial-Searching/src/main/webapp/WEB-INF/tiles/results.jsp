@@ -13,7 +13,7 @@
 </div>
 
 
- <c:forEach var="result" items="${results}">
+ <c:forEach var="result" items="${results.content}">
  
  <c:url var="profilePhoto" value="/profilephoto/${result.userId}" />
  <c:url var="profileLink" value="/profile/${result.userId}" />

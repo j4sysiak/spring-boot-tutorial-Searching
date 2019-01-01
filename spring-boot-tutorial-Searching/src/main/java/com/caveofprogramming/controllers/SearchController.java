@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.caveofprogramming.model.dto.SearchResult;
+import com.caveofprogramming.model.entity.Profile;
 import com.caveofprogramming.service.SearchService;
 
 //import com.caveofprogramming.model.dto.SearchResult;
@@ -27,9 +28,7 @@ public class SearchController {
 		
 		//System.out.println("Search text: " + text);
 		
-		List<SearchResult> results = searchService.search(text, pageNumber);
-		
-		//Page<SearchResult> results = searchService.search(text, pageNumber);
+		Page<SearchResult> results = searchService.search(text, pageNumber);
 		
 	//	modelAndView.getModel().put("s", text);
 	// 	modelAndView.getModel().put("page", results);
