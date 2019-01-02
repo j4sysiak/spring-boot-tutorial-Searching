@@ -94,7 +94,7 @@ public class BulkTests {
 //		System.out.println(s);
 //	}
 	
-		for(int numUsers=0; numUsers < 11; numUsers++) {
+		for(int numUsers=0; numUsers < 4; numUsers++) {
 			
 			String firstname = names.get(random.nextInt(names.size()));
 			String surname = names.get(random.nextInt(names.size()));
