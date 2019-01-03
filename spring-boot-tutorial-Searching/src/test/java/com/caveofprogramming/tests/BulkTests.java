@@ -34,13 +34,13 @@ import com.caveofprogramming.service.SiteUserService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
 @TestPropertySource(locations="classpath:test.properties")
-@Transactional
+//@Transactional
 public class BulkTests {
 	
 	private static final String namesFile = "/com/caveofprogramming/tests/data/names.txt";
 	private static final String interestsFile = "/com/caveofprogramming/tests/data/hobbies.txt";
 	
-	private static final  int NUM_USER=4;
+	private static final  int NUM_USER=4000;
 	
 	@Autowired 
 	private SiteUserService siteUserService;
