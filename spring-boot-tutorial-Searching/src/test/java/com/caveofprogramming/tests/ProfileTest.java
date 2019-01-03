@@ -60,6 +60,7 @@ public class ProfileTest {
 			String[] interestArray = interests[i];
 			
 			String name = new Random().ints(10, 0, 10).mapToObj(Integer::toString).collect(Collectors.joining(""));
+			user.setEmail(name + "@example.com");
 			
 			siteUserService.register(user);
 			
