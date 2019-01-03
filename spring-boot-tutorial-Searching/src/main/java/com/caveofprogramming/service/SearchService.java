@@ -39,6 +39,7 @@ public class SearchService {
 //			}	
 //		};
 		
+		//p to jest Page object
 		return results.map(p -> new SearchResult(p));
 	}
 

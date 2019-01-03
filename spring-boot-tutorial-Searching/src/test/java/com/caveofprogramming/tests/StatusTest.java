@@ -1,6 +1,6 @@
 package com.caveofprogramming.tests;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import java.util.Calendar;
 import java.util.Optional;
@@ -40,7 +40,7 @@ public class StatusTest {
  		Optional<StatusUpdate> retrievedOpt = statusUpdateDao.findById(status.getId()); //.findById(status.getId());
  		StatusUpdate retrieved = retrievedOpt.get();
  		
- 	    //assertEquals("Matching StatusUpdate", status, retrievedOpt);
+ 	       assertEquals("Matching StatusUpdate", status, retrieved);
 		
 	}
 	
@@ -64,7 +64,7 @@ public class StatusTest {
 		
 		StatusUpdate retrieved = statusUpdateDao.findFirstByOrderByAddedDesc();
 		
-		//assertEquals("Latest status update", lastStatusUpdate, retrieved);
+		 assertEquals("Latest status update", lastStatusUpdate, retrieved);
 	}
 }
 

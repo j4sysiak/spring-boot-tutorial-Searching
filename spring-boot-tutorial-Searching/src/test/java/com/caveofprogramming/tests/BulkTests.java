@@ -40,6 +40,8 @@ public class BulkTests {
 	private static final String namesFile = "/com/caveofprogramming/tests/data/names.txt";
 	private static final String interestsFile = "/com/caveofprogramming/tests/data/hobbies.txt";
 	
+	private static final  int NUM_USER=4;
+	
 	@Autowired 
 	private SiteUserService siteUserService;
 	
@@ -48,6 +50,12 @@ public class BulkTests {
 	
 	@Autowired
 	private InterestService interestService;
+	
+	private SiteUser[] testUsers = {
+		
+			new SiteUser("p1@wp.pl", "p1", "test", "test", "ADMIN_USER")
+	};
+	
 
 	private List<String> loadFile(String filename, int maxLength) throws IOException {
 		
@@ -79,7 +87,39 @@ public class BulkTests {
 	
 	//@Ignore
 	@Test
-	public void createTestData() throws IOException {
+	public void createSpecificUsers() throws IOException {
+		
+		for(SiteUser user : testUsers){
+			
+			SiteUser existingUser = siteUserService.get(user.getEmail());
+			
+			if(existingUser != null){
+				continue;
+			}
+			
+			user.setEnabled(true);
+			
+			String role = user.getRole();
+			
+			if(role==null){
+				user.setRole("ROLE_USER");
+			}
+			
+			siteUserService.save(user);
+			
+			user = siteUserService.get(user.getEmail());
+			
+			Profile profile = new Profile(user);
+			
+			profileService.save(profile);
+			
+		}
+		
+	}
+	
+	//@Ignore
+	@Test
+	public void createTestUsers() throws IOException {
 		
 		Random random = new Random();
 		
@@ -94,7 +134,7 @@ public class BulkTests {
 //		System.out.println(s);
 //	}
 	
-		for(int numUsers=0; numUsers < 4; numUsers++) {
+		for(int numUsers=0; numUsers < NUM_USER; numUsers++) {
 			
 			String firstname = names.get(random.nextInt(names.size()));
 			String surname = names.get(random.nextInt(names.size()));

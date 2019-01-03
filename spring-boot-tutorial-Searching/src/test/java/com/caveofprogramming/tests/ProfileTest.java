@@ -3,6 +3,8 @@ package com.caveofprogramming.tests;
 import static org.junit.Assert.*;
 
 import java.util.HashSet;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -56,6 +58,8 @@ public class ProfileTest {
 			
 			SiteUser user = users[i];
 			String[] interestArray = interests[i];
+			
+			String name = new Random().ints(10, 0, 10).mapToObj(Integer::toString).collect(Collectors.joining(""));
 			
 			siteUserService.register(user);
 			
